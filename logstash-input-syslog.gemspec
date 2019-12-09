@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
 
   s.name            = 'logstash-input-syslog'
-  s.version         = '3.4.1'
+  s.version         = '4.0.0'
   s.licenses        = ['Apache License (2.0)']
   s.summary         = "Reads syslog messages as events"
   s.description     = "This gem is a Logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/logstash-plugin install gemname. This gem is not a stand-alone program"
@@ -19,8 +19,11 @@ Gem::Specification.new do |s|
   # Special flag to let us know this is actually a logstash plugin
   s.metadata = { "logstash_plugin" => "true", "logstash_group" => "input" }
 
+  # Will force LS >= 6 during plugin installation
+  s.required_ruby_version = '>= 2.3' # -> JRuby 9.1 -> LS >= 6.0
+
   # Gem dependencies
-  s.add_runtime_dependency "logstash-core-plugin-api", ">= 1.60", "<= 2.99"
+  s.add_runtime_dependency "logstash-core-plugin-api", ">= 2.1.16", "<= 2.99"
 
   s.add_runtime_dependency 'concurrent-ruby'
   s.add_runtime_dependency 'stud', '>= 0.0.22', '< 0.1.0'
@@ -29,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'logstash-filter-grok'
   s.add_runtime_dependency 'logstash-filter-date'
 
-  s.add_development_dependency 'logstash-devutils'
+  s.add_development_dependency 'logstash-devutils', '>= 2.0'
   s.add_development_dependency 'logstash-codec-cef'
+  s.add_development_dependency 'insist'
 end
-

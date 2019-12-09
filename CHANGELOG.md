@@ -1,4 +1,6 @@
-## Unreleased
+## 4.0.0
+  - [BREAKING] drop support for LS < 6.0 (LogStash 5.x won't be able to use plugin)
+  - Test updated to use devutils gem 2.0 (using Java pipeline during specs)
   - Remove (deprecated) dependency on thread_safe gem.
 
 ## 3.4.1

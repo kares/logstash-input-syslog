@@ -1,5 +1,7 @@
 # encoding: utf-8
 require "logstash/devutils/rspec/spec_helper"
+require "logstash/devutils/rspec/shared_examples"
+require "insist"
 
 # running the grok code outside a logstash package means
 # LOGSTASH_HOME will not be defined, so let's set it here
@@ -274,7 +276,7 @@ describe LogStash::Inputs::Syslog do
       event_count.times do |i|
         socket.puts(custom_line)
       end
-      socket.close
+      socket&.close
 
       event_count.times.collect { queue.pop }
     end
